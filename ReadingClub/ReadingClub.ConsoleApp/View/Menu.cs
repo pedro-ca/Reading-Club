@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.View
 {
-    abstract class MenuBase
+    abstract class Menu
     {
         protected ConsoleColor fontColor;
         protected string screenType;

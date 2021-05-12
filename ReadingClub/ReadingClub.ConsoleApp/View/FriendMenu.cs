@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.View
 {
-    class MenuFriend : MenuBase, IRegistrable
+    class FriendMenu : Menu, IRegistrable
     {
-        ControllerFriend controllerFriend;
+        FriendController controllerFriend;
 
         public string SelectOption()
         {

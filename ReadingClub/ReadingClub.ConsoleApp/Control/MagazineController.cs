@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    class ControllerMagazine : ControllerBase
+    class MagazineController : Controller
     {
         List<Magazine> magazines;
     }

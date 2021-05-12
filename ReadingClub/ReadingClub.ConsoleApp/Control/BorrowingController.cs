@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    class ControllerFriend : ControllerBase
+    class BorrowingController : Controller
     {
-        List<Friend> friends;
+        List<Borrowing> borrowings;
     }
 }

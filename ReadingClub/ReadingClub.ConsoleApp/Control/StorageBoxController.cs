@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    class ControllerStorageBox : ControllerBase
+    class StorageBoxController : Controller
     {
         List<StorageBox> storageBoxes;
     }

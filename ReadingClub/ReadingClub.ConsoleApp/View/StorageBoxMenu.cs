@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.View
 {
-    class MenuStorageBox : MenuBase, IRegistrable
+    class StorageBoxMenu : Menu, IRegistrable
     {
-        ControllerStorageBox controllerStorageBox;
+        StorageBoxController controllerStorageBox;
 
         public string SelectOption()
         {

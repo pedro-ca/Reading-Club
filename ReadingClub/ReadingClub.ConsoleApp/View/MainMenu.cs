@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReadingClub.ConsoleApp.Control
+namespace ReadingClub.ConsoleApp.View
 {
-    abstract class ControllerBase
+    class MainMenu : Menu
     {
     }
 }
