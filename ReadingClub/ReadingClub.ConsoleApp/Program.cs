@@ -8,7 +8,8 @@ namespace ReadingClub.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MainMenu menu = new MainMenu(ConsoleColor.Cyan);
+            menu.ShowMenu();
         }
     }
 }

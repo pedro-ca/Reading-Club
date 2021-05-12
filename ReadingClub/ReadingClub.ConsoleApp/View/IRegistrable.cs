@@ -6,7 +6,6 @@ namespace ReadingClub.ConsoleApp.View
 {
     interface IRegistrable
     {
-        string SelectOption();
         void RegisterElement(int id);
         void VisualizeElement();
         void ModifyElement();

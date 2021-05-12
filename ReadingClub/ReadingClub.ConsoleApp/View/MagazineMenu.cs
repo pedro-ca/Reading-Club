@@ -9,17 +9,9 @@ namespace ReadingClub.ConsoleApp.View
     {
         MagazineController controllerMagazine;
 
-        public string SelectOption()
+        public override void ShowMenu()
         {
-            Console.WriteLine(" - Enter 1 to insert a new Magazine.");
-            Console.WriteLine(" - Enter 2 to visualize existing Magazine.");
-            Console.WriteLine(" - Enter 3 to modify an existing Magazine.");
-            Console.WriteLine(" - Enter 4 to remove an existing Magazine.");
-            Console.WriteLine(" - Enter S to exit;");
-
-            string option = Console.ReadLine();
-
-            return option;
+            throw new NotImplementedException();
         }
 
         public void RegisterElement(int id)
@@ -40,6 +32,19 @@ namespace ReadingClub.ConsoleApp.View
         public void RemoveElement()
         {
             throw new NotImplementedException();
+        }
+
+        protected override string SelectOption()
+        {
+            Console.WriteLine(" - Enter 1 to insert a new Magazine.");
+            Console.WriteLine(" - Enter 2 to visualize existing Magazine.");
+            Console.WriteLine(" - Enter 3 to modify an existing Magazine.");
+            Console.WriteLine(" - Enter 4 to remove an existing Magazine.");
+            Console.WriteLine(" - Enter S to exit;");
+
+            string option = Console.ReadLine();
+
+            return option;
         }
     }
 }

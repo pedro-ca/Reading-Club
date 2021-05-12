@@ -9,9 +9,11 @@ namespace ReadingClub.ConsoleApp.View
         protected ConsoleColor fontColor;
         protected string screenType;
 
+        public abstract void ShowMenu();
+        protected abstract string SelectOption();
+
         protected void DisplayerHeader(string text)
         {
-            Console.Clear();
             Console.ForegroundColor = fontColor;
             Console.WriteLine($"=-=-=-=-=-=- {text} -=-=-=-=-=-=");
         }
