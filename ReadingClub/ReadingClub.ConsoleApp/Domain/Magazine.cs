@@ -15,7 +15,7 @@ namespace ReadingClub.ConsoleApp.Domain
         {
             this.magazineCollection = magazineCollection;
             this.editionNumber = editionNumber;
-            this.releaseYear = releaseYear;
+            this.releaseYear = releaseYear;     //must not be future
             this.boxStored = boxStored;
         }
 

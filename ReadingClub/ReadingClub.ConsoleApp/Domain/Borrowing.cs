@@ -15,8 +15,8 @@ namespace ReadingClub.ConsoleApp.Domain
         {
             this.magazine = magazine;
             this.friend = friend;
-            this.borrowingDate = borrowingDate;
-            this.returnDate = returnDate;
+            this.borrowingDate = borrowingDate;     //must not be future
+            this.returnDate = returnDate;       //must not be future
         }
 
         public Friend Friend { get => friend;}
