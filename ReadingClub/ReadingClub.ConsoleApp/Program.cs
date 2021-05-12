@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadingClub.ConsoleApp.Control;
+using System;
 
 namespace ReadingClub.ConsoleApp
 {

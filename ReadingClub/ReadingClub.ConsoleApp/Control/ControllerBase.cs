@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    class ControllerBase
+    abstract class ControllerBase
     {
     }
 }

@@ -6,10 +6,10 @@ namespace ReadingClub.ConsoleApp.Domain
 {
     public class Friend
     {
-        string name;
-        string nameGuardian;
-        string telephone;
-        string address;
+        private string name;
+        private string nameGuardian;
+        private string telephone;
+        private string address;
 
         public Friend(string name, string nameGuardian, string telephone, string address)
         {
@@ -18,5 +18,10 @@ namespace ReadingClub.ConsoleApp.Domain
             this.telephone = telephone;
             this.address = address;
         }
+
+        public string Name { get => name;}
+        public string NameGuardian { get => nameGuardian;}
+        public string Telephone { get => telephone;}
+        public string Address { get => address;}
     }
 }

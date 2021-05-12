@@ -6,10 +6,10 @@ namespace ReadingClub.ConsoleApp.Domain
 {
     class Magazine
     {
-        string magazineCollection;
-        int editionNumber;
-        DateTime releaseYear;
-        StorageBox boxStored;
+        private string magazineCollection;
+        private int editionNumber;
+        private DateTime releaseYear;
+        private StorageBox boxStored;
 
         public Magazine(string magazineCollection, int editionNumber, DateTime releaseYear, StorageBox boxStored)
         {
@@ -18,5 +18,10 @@ namespace ReadingClub.ConsoleApp.Domain
             this.releaseYear = releaseYear;
             this.boxStored = boxStored;
         }
+
+        public string MagazineCollection { get => magazineCollection;}
+        public int EditionNumber { get => editionNumber;}
+        public DateTime ReleaseYear { get => releaseYear;}
+        internal StorageBox BoxStored { get => boxStored;}
     }
 }
