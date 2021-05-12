@@ -24,26 +24,27 @@ namespace ReadingClub.ConsoleApp.View
 
                 switch (option.ToLowerInvariant())
                 {
-                    case "s":
+                    case "q":
                         return;
 
                     case "1":
                         Console.WriteLine("Option 1");
-                        menu = new FriendMenu();
+                        menu = new FriendMenu(fontColor);
                         break;
 
                     case "2":
                         Console.WriteLine("Option 2");
-                        menu = new StorageBoxMenu();
+                        menu = new StorageBoxMenu(fontColor);
                         break;
 
                     case "3":
                         Console.WriteLine("Option 3");
-                        menu = new MagazineMenu();
+                        menu = new MagazineMenu(fontColor);
                         break;
 
                     case "4":
-                        Console.WriteLine("Option 4");
+                        Console.WriteLine("Option 4 - NOT IMPLEMENTED");
+                        Console.ReadLine();
                         continue;
 
                     default:
@@ -62,7 +63,7 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter 2 to manage Storage Boxes.");
             Console.WriteLine(" - Enter 3 to manage Magazines.");
             Console.WriteLine(" - Enter 4 to manage Borrows and Lends.");
-            Console.WriteLine(" - Enter S to exit;");
+            Console.WriteLine(" - Enter Q to quit.");
 
             string option = Console.ReadLine();
 

@@ -7,7 +7,6 @@ namespace ReadingClub.ConsoleApp.View
     abstract class Menu
     {
         protected ConsoleColor fontColor;
-        protected string screenType;
 
         public abstract void ShowMenu();
         protected abstract string SelectOption();

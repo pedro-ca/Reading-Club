@@ -9,29 +9,68 @@ namespace ReadingClub.ConsoleApp.View
     {
         MagazineController controllerMagazine;
 
+        public MagazineMenu(ConsoleColor fontColor)
+        {
+            this.fontColor = fontColor;
+        }
+
         public override void ShowMenu()
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                Console.Clear();
+                DisplayerHeader("MANAGE FRIENDS");
+
+                string option = SelectOption();
+
+                switch (option.ToLowerInvariant())
+                {
+                    case "q":
+                        return;
+
+                    case "1":
+                        RegisterElement(0);
+                        break;
+
+                    case "2":
+                        VisualizeElement();
+                        break;
+
+                    case "3":
+                        ModifyElement();
+                        break;
+
+                    case "4":
+                        RemoveElement();
+                        break;
+
+                    default:
+                        DisplayErrorText("Invalid option. Use only the available options from above.");
+                        Console.ReadLine();
+                        continue;
+                }
+                Console.ReadLine();
+            }
         }
 
         public void RegisterElement(int id)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Register " + id.ToString());
         }
 
         public void ModifyElement()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Modify");
         }
 
         public void VisualizeElement()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Visualize");
         }
 
         public void RemoveElement()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Remove");
         }
 
         protected override string SelectOption()
@@ -40,7 +79,7 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter 2 to visualize existing Magazine.");
             Console.WriteLine(" - Enter 3 to modify an existing Magazine.");
             Console.WriteLine(" - Enter 4 to remove an existing Magazine.");
-            Console.WriteLine(" - Enter S to exit;");
+            Console.WriteLine(" - Enter Q to quit.");
 
             string option = Console.ReadLine();
 

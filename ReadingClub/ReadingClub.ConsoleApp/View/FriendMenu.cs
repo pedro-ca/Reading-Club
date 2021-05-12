@@ -9,9 +9,48 @@ namespace ReadingClub.ConsoleApp.View
     {
         FriendController controllerFriend;
 
+        public FriendMenu(ConsoleColor fontColor)
+        {
+            this.fontColor = fontColor;
+        }
+
         public override void ShowMenu()
         {
-            
+            while (true)
+            {
+                Console.Clear();
+                DisplayerHeader("MANAGE FRIENDS");
+
+                string option = SelectOption();
+
+                switch (option.ToLowerInvariant())
+                {
+                    case "q":
+                        return;
+
+                    case "1":
+                        RegisterElement(0);
+                        break;
+
+                    case "2":
+                        VisualizeElement();
+                        break;
+
+                    case "3":
+                        ModifyElement();
+                        break;
+
+                    case "4":
+                        RemoveElement();
+                        break;
+
+                    default:
+                        DisplayErrorText("Invalid option. Use only the available options from above.");
+                        Console.ReadLine();
+                        continue;
+                }
+                Console.ReadLine();
+            }
         }
 
         public void RegisterElement(int id)
@@ -26,12 +65,12 @@ namespace ReadingClub.ConsoleApp.View
 
         public void VisualizeElement()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Visualize");
         }
 
         public void RemoveElement()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Remove");
         }
 
         protected override string SelectOption()
@@ -40,7 +79,7 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter 2 to visualize existing Friends.");
             Console.WriteLine(" - Enter 3 to modify an existing Friend.");
             Console.WriteLine(" - Enter 4 to remove an existing Friend.");
-            Console.WriteLine(" - Enter S to exit;");
+            Console.WriteLine(" - Enter Q to quit.");
 
             string option = Console.ReadLine();
 
