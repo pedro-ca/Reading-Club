@@ -1,4 +1,5 @@
 ﻿using ReadingClub.ConsoleApp.Control;
+using ReadingClub.ConsoleApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace ReadingClub.ConsoleApp.View
 {
     class FriendMenu : Menu, IRegistrable
     {
-        FriendController controllerFriend;
+        FriendController controllerFriend = new FriendController();
 
         public FriendMenu(ConsoleColor fontColor)
         {
@@ -29,11 +30,11 @@ namespace ReadingClub.ConsoleApp.View
                         return;
 
                     case "1":
-                        RegisterElement(0);
+                        RegisterElement();
                         break;
 
                     case "2":
-                        VisualizeElement();
+                        VisualizeAllElements();
                         break;
 
                     case "3":
@@ -53,9 +54,47 @@ namespace ReadingClub.ConsoleApp.View
             }
         }
 
-        public void RegisterElement(int id)
+        public void RegisterElement()
         {
-            Console.WriteLine("Register " + id.ToString());
+            DisplayerHeader("REGISTER FRIEND");
+
+            Console.WriteLine(" - Enter id of the new registered friend.");
+            string idTxt = Console.ReadLine();
+
+            if (!int.TryParse(idTxt, out int id))
+            {
+                DisplayErrorText("Attribute id must a valid integer.");
+                return;
+            }
+
+            Console.WriteLine(" - Enter name of the new registered friend.");
+            string name = Console.ReadLine();
+
+            Console.WriteLine(" - Enter name of the legal guardian of the new registered friend.");
+            string nameGuardian = Console.ReadLine();
+
+            Console.WriteLine(" - Enter telephone of the new registered friend.");
+            string telephone = Console.ReadLine();
+
+            Console.WriteLine(" - Enter address of the new registered friend.");
+            string address = Console.ReadLine();
+
+            string response = controllerFriend.CreateFriend(id, name, nameGuardian, telephone, address);
+
+            if (response != "Register Operation Sucessful")
+                DisplayErrorText(response);
+            else
+                DisplaySuccessText(response);
+        }
+
+        public void VisualizeAllElements()
+        {
+            object[] friends = controllerFriend.SelectAllEntities();
+            DisplayerHeader("REGISTERED FRIEDS");
+            foreach(Friend f in friends)
+            {
+                Console.WriteLine($"  - Friend {f.Id}: {f.Name}");
+            }
         }
 
         public void ModifyElement()
@@ -63,14 +102,29 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine("Modify");
         }
 
-        public void VisualizeElement()
-        {
-            Console.WriteLine("Visualize");
-        }
-
         public void RemoveElement()
         {
-            Console.WriteLine("Remove");
+            VisualizeAllElements();
+
+            DisplayerHeader("REMOVE FRIEND");
+
+            Console.WriteLine(" - Enter id of the friend to remove");
+            string idTxt = Console.ReadLine();
+
+            if (!int.TryParse(idTxt, out int id))
+            {
+                DisplayErrorText("Attribute id must a valid integer");
+                return;
+            }
+
+            if (controllerFriend.DeleteEntity(id))
+            {
+                DisplaySuccessText("Delete operation sucessful");
+            }
+            else
+            {
+                DisplayErrorText("Delete operation failed. Element not found.");
+            }
         }
 
         protected override string SelectOption()

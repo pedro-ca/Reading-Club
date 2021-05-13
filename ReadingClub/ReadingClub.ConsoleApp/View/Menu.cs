@@ -23,5 +23,12 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine($"!!! {text} !!!");
             Console.ForegroundColor = fontColor;
         }
+
+        protected void DisplaySuccessText(string text)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"*** {text} ***");
+            Console.ForegroundColor = fontColor;
+        }
     }
 }

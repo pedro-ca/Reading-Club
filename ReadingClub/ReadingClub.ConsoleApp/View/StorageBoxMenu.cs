@@ -29,11 +29,11 @@ namespace ReadingClub.ConsoleApp.View
                         return;
 
                     case "1":
-                        RegisterElement(0);
+                        RegisterElement();
                         break;
 
                     case "2":
-                        VisualizeElement();
+                        VisualizeAllElements();
                         break;
 
                     case "3":
@@ -53,9 +53,9 @@ namespace ReadingClub.ConsoleApp.View
             }
         }
 
-        public void RegisterElement(int id)
+        public void RegisterElement()
         {
-            Console.WriteLine("Register " + id.ToString());
+            Console.WriteLine("Register ");
         }
 
         public void ModifyElement()
@@ -63,7 +63,7 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine("Modify");
         }
 
-        public void VisualizeElement()
+        public void VisualizeAllElements()
         {
             Console.WriteLine("Visualize");
         }

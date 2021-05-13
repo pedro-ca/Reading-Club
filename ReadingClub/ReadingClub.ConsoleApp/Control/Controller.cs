@@ -28,14 +28,14 @@ namespace ReadingClub.ConsoleApp.Control
             return false;
         }
 
-        public Entity SelectEntityById(int Index)
+        public Entity SelectEntityById(int index)
         {
             Entity entityAux = null;
 
             //if (index > 0 && index < GetNumberOfEntities()) {
             for (int i = 0; i < registeredEntities.Length; i++)
             {
-                if (registeredEntities[i] != null && registeredEntities[i].Id == Index)
+                if (registeredEntities[i] != null && registeredEntities[i].Id == index)
                 {
                     entityAux = registeredEntities[i];
 
@@ -47,9 +47,9 @@ namespace ReadingClub.ConsoleApp.Control
             return entityAux;
         }
 
-        public Entity[] SelectAllEntities()
+        public object[] SelectAllEntities()
         {
-            Entity[] entityAux = new Entity[GetNumberOfEntities()];
+            object[] entityAux = new Entity[GetNumberOfEntities()];
 
             int i = 0;
 
@@ -82,7 +82,28 @@ namespace ReadingClub.ConsoleApp.Control
             return numeroChamadosCadastrados;
         }
 
-        //protected int ObterPosicaoVaga(){}
-        //protected int ObterPosicaoOcupada(int id){}
+        protected int SelectPositionById(int index)
+        {
+            for (int i = 0; i < registeredEntities.Length; i++)
+            {
+                if (registeredEntities[i] != null && registeredEntities[i].Id == index)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        
+        protected int SelectVacantPosition()
+        {
+            for (int i = 0; i < registeredEntities.Length; i++)
+            {
+                if (registeredEntities[i] == null)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }
