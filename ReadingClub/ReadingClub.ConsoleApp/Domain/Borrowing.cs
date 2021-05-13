@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
-    class Borrowing
+    class Borrowing : Entity
     {
         private Magazine magazine;
         private Friend friend;
@@ -28,11 +28,6 @@ namespace ReadingClub.ConsoleApp.Domain
             this.returnDate = returnDate;
         }
 
-        public Magazine Magazine { get => magazine; }
-        public Friend Friend { get => friend;}
-        public DateTime BorrowingDate { get => borrowingDate;}
-        public DateTime ReturnDate { get => returnDate;}
-
         private bool isValidFriend(Friend friend)
         {
             return friend != null;
@@ -46,5 +41,10 @@ namespace ReadingClub.ConsoleApp.Domain
         {
             return date <= DateTime.Now;
         }
+
+        public Magazine Magazine { get => magazine; }
+        public Friend Friend { get => friend; }
+        public DateTime BorrowingDate { get => borrowingDate; }
+        public DateTime ReturnDate { get => returnDate; }
     }
 }

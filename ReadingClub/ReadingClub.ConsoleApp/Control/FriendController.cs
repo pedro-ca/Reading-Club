@@ -7,6 +7,6 @@ namespace ReadingClub.ConsoleApp.Control
 {
     class FriendController : Controller
     {
-        List<Friend> friends;
+        
     }
 }

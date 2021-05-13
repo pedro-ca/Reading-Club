@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
-    class StorageBox
+    class StorageBox : Entity
     {
         private string color;
         private string tag;

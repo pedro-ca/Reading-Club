@@ -4,15 +4,16 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
-    public class Friend
+    public class Friend : Entity
     {
         private string name;
         private string nameGuardian;
         private string telephone;
         private string address;
 
-        public Friend(string name, string nameGuardian, string telephone, string address)
+        public Friend(int id, string name, string nameGuardian, string telephone, string address)
         {
+            this.id = id;
             this.name = name;
             this.nameGuardian = nameGuardian;
             this.telephone = telephone;
@@ -22,6 +23,6 @@ namespace ReadingClub.ConsoleApp.Domain
         public string Name { get => name;}
         public string NameGuardian { get => nameGuardian;}
         public string Telephone { get => telephone;}
-        public string Address { get => address;}
+        public string Address { get => address;}        
     }
 }

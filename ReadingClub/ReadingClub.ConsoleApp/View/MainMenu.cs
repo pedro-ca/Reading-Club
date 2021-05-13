@@ -28,17 +28,14 @@ namespace ReadingClub.ConsoleApp.View
                         return;
 
                     case "1":
-                        Console.WriteLine("Option 1");
                         menu = new FriendMenu(fontColor);
                         break;
 
                     case "2":
-                        Console.WriteLine("Option 2");
                         menu = new StorageBoxMenu(fontColor);
                         break;
 
                     case "3":
-                        Console.WriteLine("Option 3");
                         menu = new MagazineMenu(fontColor);
                         break;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
-    class Magazine
+    class Magazine : Entity
     {
         private string magazineCollection;
         private int editionNumber;
@@ -22,14 +22,14 @@ namespace ReadingClub.ConsoleApp.Domain
             this.boxStored = boxStored;
         }
 
-        public string MagazineCollection { get => magazineCollection;}
-        public int EditionNumber { get => editionNumber;}
-        public DateTime ReleaseYear { get => releaseYear;}
-        internal StorageBox BoxStored { get => boxStored;}
-
         private bool IsValidDateTime(DateTime date)
         {
             return date <= DateTime.Now;
         }
+
+        public string MagazineCollection { get => magazineCollection; }
+        public int EditionNumber { get => editionNumber; }
+        public DateTime ReleaseYear { get => releaseYear; }
+        internal StorageBox BoxStored { get => boxStored; }
     }
 }
