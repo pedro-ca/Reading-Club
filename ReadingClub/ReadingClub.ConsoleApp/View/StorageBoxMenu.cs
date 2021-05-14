@@ -1,4 +1,5 @@
 ﻿using ReadingClub.ConsoleApp.Control;
+using ReadingClub.ConsoleApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace ReadingClub.ConsoleApp.View
 {
     class StorageBoxMenu : Menu, IRegistrable
     {
-        StorageBoxController controllerStorageBox;
+        StorageBoxController controllerStorageBox = new StorageBoxController();
 
         public StorageBoxMenu(ConsoleColor fontColor)
         {
@@ -19,7 +20,7 @@ namespace ReadingClub.ConsoleApp.View
             while (true)
             {
                 Console.Clear();
-                DisplayerHeader("MANAGE FRIENDS");
+                DisplayerHeader("MANAGE STORAGE BOX");
 
                 string option = SelectOption();
 
@@ -52,25 +53,123 @@ namespace ReadingClub.ConsoleApp.View
                 Console.ReadLine();
             }
         }
-
         public void RegisterElement()
         {
-            Console.WriteLine("Register ");
-        }
+            while (true)
+            {
+                DisplayerHeader("REGISTER BOX");
 
-        public void ModifyElement()
-        {
-            Console.WriteLine("Modify");
+                Console.WriteLine(" - Enter color of the new storage box");
+                string color = Console.ReadLine();
+
+                Console.WriteLine(" - Enter tag of the new storage box");
+                string tag = Console.ReadLine();
+
+                Console.WriteLine(" - Enter number of the new storage box.");
+                string numberTxt = Console.ReadLine();
+
+                if (!int.TryParse(numberTxt, out int number))
+                {
+                    DisplayErrorText("Attribute id must a valid integer.");
+                    continue;
+                }
+
+                string response = controllerStorageBox.CreateStorageBox(0, color, tag, number);
+
+                if (response != "OP_SUCcESS")
+                    DisplayErrorText(response);
+                else
+                {
+                    DisplaySuccessText("Register Operation Sucessful");
+                    Console.ReadLine();
+                    return;
+                }
+            }
         }
 
         public void VisualizeAllElements()
         {
-            Console.WriteLine("Visualize");
+            object[] storageBoxes = controllerStorageBox.SelectAllEntities();
+            DisplayerHeader("REGISTERED FRIEDS");
+            foreach (StorageBox s in storageBoxes)
+            {
+                Console.WriteLine($"  - Friend {s.Id}: {s.Tag}");
+            }
+        }
+
+        public void ModifyElement()
+        {
+            while (true)
+            {
+                VisualizeAllElements();
+
+                DisplayerHeader("MODIFY BOX");
+
+                Console.WriteLine(" - Enter id of the storage box to Modify.");
+                string idTxt = Console.ReadLine();
+
+                if (!int.TryParse(idTxt, out int id))
+                {
+                    DisplayErrorText("Attribute id must a valid integer.");
+                    continue;
+                }
+
+                Console.WriteLine(" - Enter color of the new storage box");
+                string color = Console.ReadLine();
+
+                Console.WriteLine(" - Enter tag of the new storage box");
+                string tag = Console.ReadLine();
+
+                Console.WriteLine(" - Enter number of the new storage box.");
+                string numberTxt = Console.ReadLine();
+
+                if (!int.TryParse(numberTxt, out int number))
+                {
+                    DisplayErrorText("Attribute id must a valid integer.");
+                    continue;
+                }
+
+                string response = controllerStorageBox.CreateStorageBox(id, color, tag, number);
+
+                if (response != "OP_SUCcESS")
+                    DisplayErrorText(response);
+                else
+                {
+                    DisplaySuccessText("Register Operation Sucessful");
+                    Console.ReadLine();
+                    return;
+                }
+            }
         }
 
         public void RemoveElement()
         {
-            Console.WriteLine("Remove");
+            while (true)
+            {
+                VisualizeAllElements();
+
+                DisplayerHeader("REMOVE BOX");
+
+                Console.WriteLine(" - Enter id of the box to remove");
+                string idTxt = Console.ReadLine();
+
+                if (!int.TryParse(idTxt, out int id))
+                {
+                    DisplayErrorText("Attribute id must a valid integer");
+                    continue;
+                }
+
+                if (controllerStorageBox.DeleteEntity(id))
+                {
+                    DisplaySuccessText("Delete operation sucessful");
+                    return;
+                }
+                else
+                {
+                    DisplayErrorText("Delete operation failed. Element not found.");
+                    Console.ReadLine();
+                }
+            }
         }
 
         protected override string SelectOption()

@@ -59,21 +59,21 @@ namespace ReadingClub.ConsoleApp.View
             {
                 DisplayerHeader("REGISTER FRIEND");
 
-                Console.WriteLine(" - Enter name of the new registered friend.");
+                Console.WriteLine(" - Enter name of the new friend.");
                 string name = Console.ReadLine();
 
-                Console.WriteLine(" - Enter name of the legal guardian of the new registered friend.");
+                Console.WriteLine(" - Enter name of the legal guardian of the new friend.");
                 string nameGuardian = Console.ReadLine();
 
-                Console.WriteLine(" - Enter telephone of the new registered friend.");
+                Console.WriteLine(" - Enter telephone of the new friend.");
                 string telephone = Console.ReadLine();
 
-                Console.WriteLine(" - Enter address of the new registered friend.");
+                Console.WriteLine(" - Enter address of the new friend.");
                 string address = Console.ReadLine();
 
                 string response = controllerFriend.CreateFriend(0, name, nameGuardian, telephone, address);
 
-                if (response != "OP_SUCESS")
+                if (response != "OP_SUCcESS")
                     DisplayErrorText(response);
                 else
                 {
@@ -98,9 +98,9 @@ namespace ReadingClub.ConsoleApp.View
         {
             while (true)
             {
-                DisplayerHeader("MODIFY FRIEND");
-
                 VisualizeAllElements();
+
+                DisplayerHeader("MODIFY FRIEND");
 
                 Console.WriteLine(" - Enter id of the friend to Modify.");
                 string idTxt = Console.ReadLine();
@@ -111,21 +111,21 @@ namespace ReadingClub.ConsoleApp.View
                     continue;
                 }
 
-                Console.WriteLine(" - Enter name of the new registered friend.");
+                Console.WriteLine(" - Enter name of the existing friend.");
                 string name = Console.ReadLine();
 
-                Console.WriteLine(" - Enter name of the legal guardian of the new registered friend.");
+                Console.WriteLine(" - Enter name of the legal guardian of the existing friend.");
                 string nameGuardian = Console.ReadLine();
 
-                Console.WriteLine(" - Enter telephone of the new registered friend.");
+                Console.WriteLine(" - Enter telephone of the existing friend.");
                 string telephone = Console.ReadLine();
 
-                Console.WriteLine(" - Enter address of the new registered friend.");
+                Console.WriteLine(" - Enter address of the existing friend.");
                 string address = Console.ReadLine();
 
                 string response = controllerFriend.CreateFriend(id, name, nameGuardian, telephone, address);
 
-                if (response != "OP_SUCESS")
+                if (response != "OP_SUCcESS")
                     DisplayErrorText(response);
                 else
                 {

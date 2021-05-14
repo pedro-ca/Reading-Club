@@ -11,12 +11,12 @@ namespace ReadingClub.ConsoleApp.Domain
         private int number;
         private Magazine[] mazines;
 
-        public StorageBox(string color, string tag, int number, Magazine[] mazines)
+        public StorageBox(int id, string color, string tag, int number)
         {
+            this.id = id;
             this.color = color;
             this.tag = tag;
             this.number = number;
-            this.mazines = mazines;
         }
 
         public string Color { get => color; }

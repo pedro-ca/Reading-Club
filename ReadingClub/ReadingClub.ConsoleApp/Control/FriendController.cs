@@ -26,7 +26,7 @@ namespace ReadingClub.ConsoleApp.Control
 
                 Friend friend = new Friend(index, name, name, telephone, address);
                 registeredEntities[position] = friend;
-                operationMessage = "OP_SUCESS";
+                operationMessage = "OP_SUCcESS";
             }
             catch (Exception e)
             {
