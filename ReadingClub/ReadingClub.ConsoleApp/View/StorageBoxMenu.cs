@@ -21,7 +21,7 @@ namespace ReadingClub.ConsoleApp.View
             while (true)
             {
                 Console.Clear();
-                DisplayerHeader("MANAGE STORAGE BOX");
+                DisplayerHeader("MANAGE BOXES");
 
                 string option = SelectOption();
 
@@ -47,7 +47,7 @@ namespace ReadingClub.ConsoleApp.View
                         break;
 
                     default:
-                        DisplayErrorText("Invalid option. Use only the available options from above."); ;
+                        DisplayErrorText("Invalid option. Use only the available options from above.");
                         break;
                 }
                 Console.ReadLine();
@@ -90,7 +90,7 @@ namespace ReadingClub.ConsoleApp.View
             DisplayerHeader("REGISTERED BOXES");
             foreach (StorageBox s in storageBoxes)
             {
-                Console.WriteLine($"  - Storage Box {s.Id}: {s.Tag}");
+                Console.WriteLine($"  - Storage Box {s.Id}: {s.Color}, {s.Tag}, {s.Number}");
             }
         }
 

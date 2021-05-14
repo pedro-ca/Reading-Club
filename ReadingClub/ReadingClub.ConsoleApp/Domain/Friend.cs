@@ -20,6 +20,7 @@ namespace ReadingClub.ConsoleApp.Domain
             this.address = address;
         }
 
+
         public string Name { get => name;}
         public string NameGuardian { get => nameGuardian;}
         public string Telephone { get => telephone;}

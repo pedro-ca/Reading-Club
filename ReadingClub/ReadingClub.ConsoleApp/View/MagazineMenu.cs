@@ -115,7 +115,7 @@ namespace ReadingClub.ConsoleApp.View
             DisplayerHeader("REGISTERED MAGAZINES");
             foreach (Magazine m in magazines)
             {
-                Console.WriteLine($"  - Magazine {m.Id}: {m.MagazineCollection}");
+                Console.WriteLine($"  - Magazine {m.Id}: {m.MagazineCollection}, {m.EditionNumber}, {m.ReleaseYear}. {m.BoxStored.Tag}");
             }
         }
 

@@ -89,7 +89,7 @@ namespace ReadingClub.ConsoleApp.View
             DisplayerHeader("REGISTERED FRIEDS");
             foreach (Friend f in friends)
             {
-                Console.WriteLine($"  - Friend {f.Id}: {f.Name}");
+                Console.WriteLine($"  - Friend {f.Id}: {f.Name}, {f.NameGuardian} {f.Telephone}, {f.Address}");
             }
         }
 

@@ -10,6 +10,7 @@ namespace ReadingClub.ConsoleApp.View
         FriendController controllerFriend;
         StorageBoxController controllerStorageBox;
         MagazineController controllerMagazine;
+        BorrowingController controllerBorrowing
 
         public MainMenu(ConsoleColor fontColor)
         {
@@ -50,8 +51,7 @@ namespace ReadingClub.ConsoleApp.View
                         break;
 
                     case "4":
-                        Console.WriteLine("Option 4 - NOT IMPLEMENTED");
-                        Console.ReadLine();
+                        menu = new BorrowingMenu(controllerBorrowing, controllerFriend, controllerMagazine, fontColor);
                         continue;
 
                     default:
@@ -69,7 +69,7 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter 1 to manage Friends.");
             Console.WriteLine(" - Enter 2 to manage Storage Boxes.");
             Console.WriteLine(" - Enter 3 to manage Magazines.");
-            Console.WriteLine(" - Enter 4 to manage Borrows and Lends.");
+            Console.WriteLine(" - Enter 4 to manage Borrowings of magazines to friends.");
             Console.WriteLine(" - Enter Q to quit.");
 
             string option = Console.ReadLine();
