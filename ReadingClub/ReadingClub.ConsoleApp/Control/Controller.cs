@@ -13,7 +13,7 @@ namespace ReadingClub.ConsoleApp.Control
 
         public bool DeleteEntity(int index) 
         {
-            //if (index > 0 && index < GetNumberOfEntities()) {
+            if (index > 0 && index <= GetNumberOfEntities()) {
                 for (int i = 0; i < registeredEntities.Length; i++)
                 {
                     if (registeredEntities[i].Id == index)
@@ -23,7 +23,7 @@ namespace ReadingClub.ConsoleApp.Control
                         return true;
                     }
                 }
-            //}
+            }
 
             return false;
         }
@@ -32,7 +32,6 @@ namespace ReadingClub.ConsoleApp.Control
         {
             Entity entityAux = null;
 
-            //if (index > 0 && index < GetNumberOfEntities()) {
             for (int i = 0; i < registeredEntities.Length; i++)
             {
                 if (registeredEntities[i] != null && registeredEntities[i].Id == index)
@@ -42,7 +41,6 @@ namespace ReadingClub.ConsoleApp.Control
                     break;
                 }
             }
-            //}
 
             return entityAux;
         }

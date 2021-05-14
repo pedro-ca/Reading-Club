@@ -9,7 +9,6 @@ namespace ReadingClub.ConsoleApp.Domain
         private string color;
         private string tag;
         private int number;
-        private Magazine[] mazines;
 
         public StorageBox(int id, string color, string tag, int number)
         {
@@ -22,6 +21,5 @@ namespace ReadingClub.ConsoleApp.Domain
         public string Color { get => color; }
         public string Tag { get => tag;}
         public int Number { get => number;}
-        internal Magazine[] Mazines { get => mazines;}
     }
 }

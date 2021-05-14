@@ -11,11 +11,12 @@ namespace ReadingClub.ConsoleApp.Domain
         private DateTime releaseYear;
         private StorageBox boxStored;
 
-        public Magazine(string magazineCollection, int editionNumber, DateTime releaseYear, StorageBox boxStored)
+        public Magazine(int id, string magazineCollection, int editionNumber, DateTime releaseYear, StorageBox boxStored)
         {
             if (!IsValidDateTime(releaseYear))
                 throw new ArgumentException("ReleaseYear property cannot be set as a date from the future.");
 
+            this.id = id;
             this.magazineCollection = magazineCollection;
             this.editionNumber = editionNumber;
             this.releaseYear = releaseYear;

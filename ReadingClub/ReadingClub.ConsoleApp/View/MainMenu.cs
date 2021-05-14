@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadingClub.ConsoleApp.Control;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,19 @@ namespace ReadingClub.ConsoleApp.View
 {
     class MainMenu : Menu
     {
+        FriendController controllerFriend;
+        StorageBoxController controllerStorageBox;
+        MagazineController controllerMagazine;
+
         public MainMenu(ConsoleColor fontColor)
         {
+            controllerFriend = new FriendController();
+            controllerStorageBox = new StorageBoxController();
+            controllerMagazine = new MagazineController();
             this.fontColor = fontColor;
         }
+
+
 
         public override void ShowMenu()
         {
@@ -28,15 +38,15 @@ namespace ReadingClub.ConsoleApp.View
                         return;
 
                     case "1":
-                        menu = new FriendMenu(fontColor);
+                        menu = new FriendMenu(controllerFriend,fontColor);
                         break;
 
                     case "2":
-                        menu = new StorageBoxMenu(fontColor);
+                        menu = new StorageBoxMenu(controllerStorageBox,fontColor);
                         break;
 
                     case "3":
-                        menu = new MagazineMenu(fontColor);
+                        menu = new MagazineMenu(controllerMagazine,controllerStorageBox,fontColor);
                         break;
 
                     case "4":
