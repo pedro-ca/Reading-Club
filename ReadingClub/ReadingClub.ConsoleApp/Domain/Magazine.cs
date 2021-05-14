@@ -13,6 +13,8 @@ namespace ReadingClub.ConsoleApp.Domain
 
         public Magazine(int id, string magazineCollection, int editionNumber, DateTime releaseYear, StorageBox boxStored)
         {
+            if (!isValidStorageBox(boxStored))
+                throw new ArgumentException("Friend property cannot be set instantiated as a null value.");
             if (!IsValidDateTime(releaseYear))
                 throw new ArgumentException("ReleaseYear property cannot be set as a date from the future.");
 
@@ -26,6 +28,11 @@ namespace ReadingClub.ConsoleApp.Domain
         private bool IsValidDateTime(DateTime date)
         {
             return date <= DateTime.Now;
+        }
+
+        private bool isValidStorageBox(StorageBox box)
+        {
+            return box != null;
         }
 
         public string MagazineCollection { get => magazineCollection; }

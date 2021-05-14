@@ -100,7 +100,7 @@ namespace ReadingClub.ConsoleApp.View
 
             DisplayerHeader("MODIFY BOX");
 
-            Console.WriteLine(" - Enter id of the storage box to Modify.");
+            Console.WriteLine(" - Enter id of the new storage box.");
             string idTxt = Console.ReadLine();
 
             if (!int.TryParse(idTxt, out int id))

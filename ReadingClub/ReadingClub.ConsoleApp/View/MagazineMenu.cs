@@ -58,55 +58,51 @@ namespace ReadingClub.ConsoleApp.View
 
         public void RegisterElement()
         {
-            while (true)
+            DisplayerHeader("REGISTER MAGAZINE");
+
+            Console.WriteLine(" - Enter collection of the new magazine");
+            string magazineCollection = Console.ReadLine();
+
+            Console.WriteLine(" - Enter edition number of the new magazine");
+            string editionNumberTxt = Console.ReadLine();
+
+            if (!int.TryParse(editionNumberTxt, out int editionNumber))
             {
-                VisualizeAllElements();
-
-                DisplayerHeader("REGISTER MAGAZINE");
-
-                Console.WriteLine(" - Enter collection of the magazine to Modify");
-                string magazineCollection = Console.ReadLine();
-
-                Console.WriteLine(" - Enter edition number of the magazine to Modify");
-                string editionNumberTxt = Console.ReadLine();
-
-                if (!int.TryParse(editionNumberTxt, out int editionNumber))
-                {
-                    DisplayErrorText("Attribute edition number must a valid integer.");
-                    continue;
-                }
-
-                Console.WriteLine(" - Enter release year of the magazine to Modify");
-                string releaseYearTxt = Console.ReadLine();
-
-                if (!DateTime.TryParse(releaseYearTxt, out DateTime releaseYear))
-                {
-                    DisplayErrorText("Attribute id of the storage box must a valid integer.");
-                    continue;
-                }
-
-                Console.WriteLine(" - Enter id of the storage box of the magazine to Modify");
-                string storageboxIdTxt = Console.ReadLine();
-
-                if (!int.TryParse(storageboxIdTxt, out int storageboxId))
-                {
-                    DisplayErrorText("Attribute id of the storage box must a valid integer.");
-                    continue;
-                }
-
-                StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
-
-                string response = controllerMagazine.CreateMagazine(0, magazineCollection, editionNumber, releaseYear, storageBox);
-
-                if (response != "OP_SUCcESS")
-                    DisplayErrorText(response);
-                else
-                {
-                    DisplaySuccessText("Register Operation Sucessful");
-                    Console.ReadLine();
-                    return;
-                }
+                DisplayErrorText("Attribute edition number must a valid integer.");
+                return;
             }
+
+            Console.WriteLine(" - Enter release year of the new magazine ");
+            string releaseYearTxt = Console.ReadLine();
+
+            if (!DateTime.TryParse(releaseYearTxt, out DateTime releaseYear))
+            {
+                DisplayErrorText("Attribute id of the storage box must a valid integer.");
+                return;
+            }
+
+            Console.WriteLine(" - Enter id of the storage box of the new magazine ");
+            string storageboxIdTxt = Console.ReadLine();
+
+            if (!int.TryParse(storageboxIdTxt, out int storageboxId))
+            {
+                DisplayErrorText("Attribute id of the storage box must a valid integer.");
+                return;
+            }
+
+            StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
+
+            string response = controllerMagazine.CreateMagazine(0, magazineCollection, editionNumber, releaseYear, storageBox);
+
+            if (response != "OP_SUCcESS")
+                DisplayErrorText(response);
+            else
+            {
+                DisplaySuccessText("Register Operation Sucessful");
+                Console.ReadLine();
+                return;
+            }
+
         }
 
         public void VisualizeAllElements()
@@ -125,7 +121,7 @@ namespace ReadingClub.ConsoleApp.View
 
             DisplayerHeader("MODIFY MAGAZINE");
 
-            Console.WriteLine(" - Enter id of the magazine to Modify");
+            Console.WriteLine(" - Enter id of the magazine to Modify ");
             string idTxt = Console.ReadLine();
 
             if (!int.TryParse(idTxt, out int id))
@@ -146,12 +142,12 @@ namespace ReadingClub.ConsoleApp.View
                 return;
             }
 
-            Console.WriteLine(" - Enter release year of the magazine to Modify");
+            Console.WriteLine(" - Enter release date of the magazine to Modify");
             string releaseYearTxt = Console.ReadLine();
 
             if (!DateTime.TryParse(releaseYearTxt, out DateTime releaseYear))
             {
-                DisplayErrorText("Attribute id of the storage box must a valid integer.");
+                DisplayErrorText("Attribute id of the storage box must a valid DateTime.");
                 return;
             }
 

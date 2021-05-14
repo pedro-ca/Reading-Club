@@ -10,13 +10,14 @@ namespace ReadingClub.ConsoleApp.View
         FriendController controllerFriend;
         StorageBoxController controllerStorageBox;
         MagazineController controllerMagazine;
-        BorrowingController controllerBorrowing
+        BorrowingController controllerBorrowing;
 
         public MainMenu(ConsoleColor fontColor)
         {
             controllerFriend = new FriendController();
             controllerStorageBox = new StorageBoxController();
             controllerMagazine = new MagazineController();
+            controllerBorrowing = new BorrowingController();
             this.fontColor = fontColor;
         }
 
@@ -52,7 +53,7 @@ namespace ReadingClub.ConsoleApp.View
 
                     case "4":
                         menu = new BorrowingMenu(controllerBorrowing, controllerFriend, controllerMagazine, fontColor);
-                        continue;
+                        break;
 
                     default:
                         DisplayErrorText("Invalid option. Use only the available options from above.");
