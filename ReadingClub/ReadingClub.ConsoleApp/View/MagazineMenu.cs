@@ -77,7 +77,7 @@ namespace ReadingClub.ConsoleApp.View
 
             if (!DateTime.TryParse(releaseYearTxt, out DateTime releaseYear))
             {
-                DisplayErrorText("Attribute id of the storage box must a valid integer.");
+                DisplayErrorText("Attribute release year of the storage box must a valid date.");
                 return;
             }
 
@@ -92,9 +92,10 @@ namespace ReadingClub.ConsoleApp.View
 
             StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
 
-            string response = controllerMagazine.CreateMagazine(0, magazineCollection, editionNumber, releaseYear, storageBox);
+            Magazine magazine = new Magazine(0, magazineCollection, editionNumber, releaseYear, storageBox);
+            string response = controllerMagazine.CreateMagazine(magazine);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {
@@ -162,9 +163,10 @@ namespace ReadingClub.ConsoleApp.View
 
             StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
 
-            string response = controllerMagazine.CreateMagazine(id, magazineCollection, editionNumber, releaseYear, storageBox);
+            Magazine magazine = new Magazine(id, magazineCollection, editionNumber, releaseYear, storageBox);
+            string response = controllerMagazine.CreateMagazine(magazine);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {

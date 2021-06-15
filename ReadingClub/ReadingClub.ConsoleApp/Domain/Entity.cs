@@ -8,6 +8,6 @@ namespace ReadingClub.ConsoleApp.Domain
     {
         protected int id;
 
-        public int Id { get => id;}
+        public int Id { get => id; set => id = value; }
     }
 }

@@ -71,10 +71,10 @@ namespace ReadingClub.ConsoleApp.View
                 DisplayErrorText("Attribute id must a valid integer.");
                 return;
             }
+            StorageBox box = new StorageBox(0, color, tag, number);
+            string response = controllerStorageBox.CreateStorageBox(box);
 
-            string response = controllerStorageBox.CreateStorageBox(0, color, tag, number);
-
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {
@@ -124,9 +124,10 @@ namespace ReadingClub.ConsoleApp.View
                 return;
             }
 
-            string response = controllerStorageBox.CreateStorageBox(id, color, tag, number);
+            StorageBox box = new StorageBox(id, color, tag, number);
+            string response = controllerStorageBox.CreateStorageBox(box);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {

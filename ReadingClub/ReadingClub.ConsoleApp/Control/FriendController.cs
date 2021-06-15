@@ -7,26 +7,26 @@ namespace ReadingClub.ConsoleApp.Control
 {
     class FriendController : Controller
     {
-        public string CreateFriend(int index, string name, string nameGuardian, string telephone, string address)
+        public string CreateFriend(Friend friend)
         {
             int position;
             string operationMessage;
 
             try
             {
-                if (index == 0)
+                if (friend.Id == 0)
                 {
-                    index = GenerateId();
+                    friend.Id = GenerateId();
                     position = this.SelectVacantPosition();
                 }
                 else
                 {
-                    position = this.SelectPositionById(index);
+                    position = this.SelectPositionById(friend.Id);
                 }
 
-                Friend friend = new Friend(index, name, name, telephone, address);
+                
                 registeredEntities[position] = friend;
-                operationMessage = "OP_SUCcESS";
+                operationMessage = "OP_SUCCESS";
             }
             catch (Exception e)
             {

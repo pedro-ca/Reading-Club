@@ -7,26 +7,25 @@ namespace ReadingClub.ConsoleApp.Control
 {
     class StorageBoxController : Controller
     {
-        public string CreateStorageBox(int index, string color, string tag, int number)
+        public string CreateStorageBox(StorageBox box)
         {
             int position;
             string operationMessage;
 
             try
             {
-                if (index == 0)
+                if (box.Id == 0)
                 {
-                    index = GenerateId();
+                    box.Id = GenerateId();
                     position = this.SelectVacantPosition();
                 }
                 else
                 {
-                    position = this.SelectPositionById(index);
+                    position = this.SelectPositionById(box.Id);
                 }
 
-                StorageBox box = new StorageBox(index, color, tag, number);
                 registeredEntities[position] = box;
-                operationMessage = "OP_SUCcESS";
+                operationMessage = "OP_SUCCESS";
             }
             catch (Exception e)
             {

@@ -83,9 +83,10 @@ namespace ReadingClub.ConsoleApp.View
             Friend friend = (Friend)controllerFriend.SelectEntityById(friendId);
             Magazine magazine = (Magazine)controllerMagazine.SelectEntityById(magazineId);
 
-            string response = controllerBorrowing.CreateBorrowing(0, magazine, friend, DateTime.Now);
+            Borrowing borrowing = new Borrowing(0, magazine, friend, DateTime.Now);
+            string response = controllerBorrowing.CreateBorrowing(borrowing);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {

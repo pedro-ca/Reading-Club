@@ -7,26 +7,26 @@ namespace ReadingClub.ConsoleApp.Control
 {
     class BorrowingController : Controller
     {
-        public string CreateBorrowing(int index, Magazine magazine, Friend friend, DateTime borrowingDate)
+        public string CreateBorrowing(Borrowing borrowing)
         {
             int position;
             string operationMessage;
 
             try
             {
-                if (index == 0)
+                if (borrowing.Id == 0)
                 {
-                    index = GenerateId();
+                    borrowing.Id = GenerateId();
                     position = this.SelectVacantPosition();
                 }
                 else
                 {
-                    position = this.SelectPositionById(index);
+                    position = this.SelectPositionById(borrowing.Id);
                 }
 
-                Borrowing borrowing = new Borrowing(index, magazine, friend, borrowingDate);
+                
                 registeredEntities[position] = borrowing;
-                operationMessage = "OP_SUCcESS";
+                operationMessage = "OP_SUCCESS";
             }
             catch (Exception e)
             {

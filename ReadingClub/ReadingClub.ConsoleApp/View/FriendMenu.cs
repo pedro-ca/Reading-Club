@@ -70,9 +70,10 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter address of the new friend.");
             string address = Console.ReadLine();
 
-            string response = controllerFriend.CreateFriend(0, name, nameGuardian, telephone, address);
+            Friend friend = new Friend(0, name, nameGuardian, telephone, address);
+            string response = controllerFriend.CreateFriend(friend);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {
@@ -89,7 +90,7 @@ namespace ReadingClub.ConsoleApp.View
             DisplayerHeader("REGISTERED FRIEDS");
             foreach (Friend f in friends)
             {
-                Console.WriteLine($"  - Friend {f.Id}: {f.Name}, {f.NameGuardian} {f.Telephone}, {f.Address}");
+                Console.WriteLine($"  - Friend {f.Id}: {f.Name}, {f.NameGuardian}, {f.Telephone}, {f.Address}");
             }
         }
 
@@ -120,9 +121,10 @@ namespace ReadingClub.ConsoleApp.View
             Console.WriteLine(" - Enter address of the existing friend.");
             string address = Console.ReadLine();
 
-            string response = controllerFriend.CreateFriend(id, name, nameGuardian, telephone, address);
+            Friend friend = new Friend(id, name, nameGuardian, telephone, address);
+            string response = controllerFriend.CreateFriend(friend);
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {

@@ -7,26 +7,25 @@ namespace ReadingClub.ConsoleApp.Control
 {
     class MagazineController : Controller
     {
-        public string CreateMagazine(int index, string magazineCollection, int editionNumber, DateTime releaseYear, StorageBox boxStored)
+        public string CreateMagazine(Magazine magazine)
         {
             int position;
             string operationMessage;
 
             try
             {
-                if (index == 0)
+                if (magazine.Id == 0)
                 {
-                    index = GenerateId();
+                    magazine.Id = GenerateId();
                     position = this.SelectVacantPosition();
                 }
                 else
                 {
-                    position = this.SelectPositionById(index);
+                    position = this.SelectPositionById(magazine.Id);
                 }
 
-                Magazine magazine = new Magazine(index, magazineCollection, editionNumber, releaseYear, boxStored);
                 registeredEntities[position] = magazine;
-                operationMessage = "OP_SUCcESS";
+                operationMessage = "OP_SUCCESS";
             }
             catch (Exception e)
             {
