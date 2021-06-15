@@ -72,7 +72,7 @@ namespace ReadingClub.ConsoleApp.View
                 return;
             }
             StorageBox box = new StorageBox(0, color, tag, number);
-            string response = controllerStorageBox.CreateStorageBox(box);
+            string response = controllerStorageBox.CreateEntity(box);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
@@ -125,7 +125,7 @@ namespace ReadingClub.ConsoleApp.View
             }
 
             StorageBox box = new StorageBox(id, color, tag, number);
-            string response = controllerStorageBox.CreateStorageBox(box);
+            string response = controllerStorageBox.CreateEntity(box);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);

@@ -5,11 +5,40 @@ using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    abstract class Controller
+    class Controller<T> where T:Entity
     {
         const int REGISTER_LIMIT = 100;
-        protected Entity[] registeredEntities = new Entity[REGISTER_LIMIT];
+        protected T[] registeredEntities = new T[REGISTER_LIMIT];
         protected int lastRegisteredId = 0;
+
+        public string CreateEntity(T entity)
+        {
+            int position;
+            string operationMessage;
+
+            try
+            {
+                if (entity.Id == 0)
+                {
+                    entity.Id = GenerateId();
+                    position = this.SelectVacantPosition();
+                }
+                else
+                {
+                    position = this.SelectPositionById(entity.Id);
+                }
+
+
+                registeredEntities[position] = entity;
+                operationMessage = "OP_SUCCESS";
+            }
+            catch (Exception e)
+            {
+                operationMessage = "Error: " + e.Message;
+            }
+
+            return operationMessage;
+        }
 
         public bool DeleteEntity(int index) 
         {
@@ -28,9 +57,9 @@ namespace ReadingClub.ConsoleApp.Control
             return false;
         }
 
-        public Entity SelectEntityById(int index)
+        public T SelectEntityById(int index)
         {
-            Entity entityAux = null;
+            T entityAux = null;
 
             for (int i = 0; i < registeredEntities.Length; i++)
             {
@@ -47,11 +76,11 @@ namespace ReadingClub.ConsoleApp.Control
 
         public object[] SelectAllEntities()
         {
-            object[] entityAux = new Entity[GetNumberOfEntities()];
+            object[] entityAux = new T[GetNumberOfEntities()];
 
             int i = 0;
 
-            foreach (Entity entity in registeredEntities)
+            foreach (T entity in registeredEntities)
             {
                 if (entity != null)
                     entityAux[i++] = entity;

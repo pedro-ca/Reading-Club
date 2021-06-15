@@ -84,7 +84,7 @@ namespace ReadingClub.ConsoleApp.View
             Magazine magazine = (Magazine)controllerMagazine.SelectEntityById(magazineId);
 
             Borrowing borrowing = new Borrowing(0, magazine, friend, DateTime.Now);
-            string response = controllerBorrowing.CreateBorrowing(borrowing);
+            string response = controllerBorrowing.CreateEntity(borrowing);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);

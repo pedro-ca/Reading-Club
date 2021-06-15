@@ -71,7 +71,7 @@ namespace ReadingClub.ConsoleApp.View
             string address = Console.ReadLine();
 
             Friend friend = new Friend(0, name, nameGuardian, telephone, address);
-            string response = controllerFriend.CreateFriend(friend);
+            string response = controllerFriend.CreateEntity(friend);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
@@ -122,7 +122,7 @@ namespace ReadingClub.ConsoleApp.View
             string address = Console.ReadLine();
 
             Friend friend = new Friend(id, name, nameGuardian, telephone, address);
-            string response = controllerFriend.CreateFriend(friend);
+            string response = controllerFriend.CreateEntity(friend);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
@@ -132,7 +132,6 @@ namespace ReadingClub.ConsoleApp.View
                 Console.ReadLine();
                 return;
             }
-
         }
 
         public void RemoveElement()

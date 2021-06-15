@@ -93,7 +93,7 @@ namespace ReadingClub.ConsoleApp.View
             StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
 
             Magazine magazine = new Magazine(0, magazineCollection, editionNumber, releaseYear, storageBox);
-            string response = controllerMagazine.CreateMagazine(magazine);
+            string response = controllerMagazine.CreateEntity(magazine);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
@@ -164,7 +164,7 @@ namespace ReadingClub.ConsoleApp.View
             StorageBox storageBox = (StorageBox)controllerStorageBox.SelectEntityById(storageboxId);
 
             Magazine magazine = new Magazine(id, magazineCollection, editionNumber, releaseYear, storageBox);
-            string response = controllerMagazine.CreateMagazine(magazine);
+            string response = controllerMagazine.CreateEntity(magazine);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
