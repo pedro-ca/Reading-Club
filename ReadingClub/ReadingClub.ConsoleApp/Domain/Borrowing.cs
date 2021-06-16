@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
@@ -11,7 +9,7 @@ namespace ReadingClub.ConsoleApp.Domain
         private DateTime borrowingDate;
         private DateTime returnDate;
 
-        public Borrowing(int id,  Magazine magazine, Friend friend, DateTime borrowingDate)
+        public Borrowing(int id, Magazine magazine, Friend friend, DateTime borrowingDate)
         {
             if (!IsValidMagazine(magazine))
                 throw new ArgumentException("Magazine property cannot be set instantiated as a null value.");
@@ -38,6 +36,11 @@ namespace ReadingClub.ConsoleApp.Domain
         private bool IsValidDateTime(DateTime date)
         {
             return date <= DateTime.Now;
+        }
+
+        public override string ToString()
+        {
+            return $"Borrowing {id}: [{magazine},{friend},{borrowingDate}]";
         }
 
         public Magazine Magazine { get => magazine; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReadingClub.ConsoleApp.Domain
+﻿namespace ReadingClub.ConsoleApp.Domain
 {
     public class Friend : Entity
     {
@@ -20,10 +16,16 @@ namespace ReadingClub.ConsoleApp.Domain
             this.address = address;
         }
 
+        public override string ToString()
+        {
+            return $"Friend {id}: [{name},{nameGuardian},{telephone},{address}]";
+        }
 
-        public string Name { get => name;}
-        public string NameGuardian { get => nameGuardian;}
-        public string Telephone { get => telephone;}
-        public string Address { get => address;}        
+        public string Name { get => name; }
+        public string NameGuardian { get => nameGuardian; }
+        public string Telephone { get => telephone; }
+        public string Address { get => address; }
+
+
     }
 }

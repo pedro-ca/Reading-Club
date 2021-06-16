@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReadingClub.ConsoleApp.Domain
+﻿namespace ReadingClub.ConsoleApp.Domain
 {
     class StorageBox : Entity
     {
@@ -17,9 +13,13 @@ namespace ReadingClub.ConsoleApp.Domain
             this.tag = tag;
             this.number = number;
         }
+        public override string ToString()
+        {
+            return $"Storage Box {id}: [{color},{tag},{number}]";
+        }
 
         public string Color { get => color; }
-        public string Tag { get => tag;}
-        public int Number { get => number;}
+        public string Tag { get => tag; }
+        public int Number { get => number; }
     }
 }

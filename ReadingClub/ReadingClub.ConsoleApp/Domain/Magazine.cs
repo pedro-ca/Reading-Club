@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadingClub.ConsoleApp.Domain
 {
@@ -33,6 +31,11 @@ namespace ReadingClub.ConsoleApp.Domain
         private bool isValidStorageBox(StorageBox box)
         {
             return box != null;
+        }
+
+        public override string ToString()
+        {
+            return $"Magazine {id}: [{magazineCollection}, {editionNumber}, {releaseYear}, {boxStored}]";
         }
 
         public string MagazineCollection { get => magazineCollection; }

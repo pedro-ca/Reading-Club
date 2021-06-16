@@ -1,20 +1,18 @@
 ﻿using ReadingClub.ConsoleApp.Control;
 using ReadingClub.ConsoleApp.Domain;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadingClub.ConsoleApp.View
 {
     class BorrowingMenu : Menu
     {
-        private BorrowingController controllerBorrowing;
+        private BorrowingController mainController;
         private FriendController controllerFriend;
         private MagazineController controllerMagazine;
 
         public BorrowingMenu(BorrowingController controllerBorrowing, FriendController controllerFriend, MagazineController controllerMagazine, ConsoleColor fontColor)
         {
-            this.controllerBorrowing = controllerBorrowing;
+            this.mainController = controllerBorrowing;
             this.controllerFriend = controllerFriend;
             this.controllerMagazine = controllerMagazine;
             this.fontColor = fontColor;
@@ -22,7 +20,7 @@ namespace ReadingClub.ConsoleApp.View
 
         public override void ShowMenu()
         {
-            while(true)
+            while (true)
             {
                 Console.Clear();
                 DisplayerHeader("MANAGE BORROWINGS");
@@ -84,7 +82,7 @@ namespace ReadingClub.ConsoleApp.View
             Magazine magazine = (Magazine)controllerMagazine.SelectEntityById(magazineId);
 
             Borrowing borrowing = new Borrowing(0, magazine, friend, DateTime.Now);
-            string response = controllerBorrowing.CreateEntity(borrowing);
+            string response = mainController.CreateEntity(borrowing);
 
             if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
@@ -111,18 +109,18 @@ namespace ReadingClub.ConsoleApp.View
             }
 
             string response;
-            Borrowing borrow = (Borrowing)controllerBorrowing.SelectEntityById(borrowingId);
+            Borrowing borrow = (Borrowing)mainController.SelectEntityById(borrowingId);
             if (IsBorrowOpen(borrow))
             {
                 borrow.ReturnDate = DateTime.Now;
-                response = "OP_SUCcESS";
+                response = "OP_SUCCESS";
             }
             else
             {
                 response = "Error: Borrowing is closed.";
             }
 
-            if (response != "OP_SUCcESS")
+            if (response != "OP_SUCCESS")
                 DisplayErrorText(response);
             else
             {
@@ -134,7 +132,7 @@ namespace ReadingClub.ConsoleApp.View
 
         private void VisualizeOpenBorrowingsOfDay()
         {
-            object[] borrowings = controllerBorrowing.SelectAllEntities();
+            object[] borrowings = mainController.SelectAllEntities();
             DisplayerHeader("OPEN DAY BORROWINGS");
             foreach (Borrowing b in borrowings)
             {
@@ -147,11 +145,11 @@ namespace ReadingClub.ConsoleApp.View
 
         private void VisualizeBorrowingsOfMonth()
         {
-            object[] borrowings = controllerBorrowing.SelectAllEntities();
+            object[] borrowings = mainController.SelectAllEntities();
             DisplayerHeader("ALL MONTH BORROWINGS");
             foreach (Borrowing b in borrowings)
             {
-                if(DateTime.Now.Month == b.BorrowingDate.Month) 
+                if (DateTime.Now.Month == b.BorrowingDate.Month)
                 {
                     Console.WriteLine($"  - Storage Borrowing {b.Id}: {b.Magazine.MagazineCollection}, {b.Friend.Name}, {b.BorrowingDate}, {b.ReturnDate}");
                 }

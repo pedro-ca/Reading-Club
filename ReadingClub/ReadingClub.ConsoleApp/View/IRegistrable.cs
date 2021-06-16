@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReadingClub.ConsoleApp.View
+﻿namespace ReadingClub.ConsoleApp.View
 {
     interface IRegistrable
     {

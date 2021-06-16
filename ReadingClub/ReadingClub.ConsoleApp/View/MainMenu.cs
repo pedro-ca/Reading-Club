@@ -1,7 +1,5 @@
 ﻿using ReadingClub.ConsoleApp.Control;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadingClub.ConsoleApp.View
 {
@@ -21,8 +19,6 @@ namespace ReadingClub.ConsoleApp.View
             this.fontColor = fontColor;
         }
 
-
-
         public override void ShowMenu()
         {
             while (true)
@@ -40,15 +36,15 @@ namespace ReadingClub.ConsoleApp.View
                         return;
 
                     case "1":
-                        menu = new FriendMenu(controllerFriend,fontColor);
+                        menu = new FriendMenu(controllerFriend, fontColor);
                         break;
 
                     case "2":
-                        menu = new StorageBoxMenu(controllerStorageBox,fontColor);
+                        menu = new StorageBoxMenu(controllerStorageBox, fontColor);
                         break;
 
                     case "3":
-                        menu = new MagazineMenu(controllerMagazine,controllerStorageBox,fontColor);
+                        menu = new MagazineMenu(controllerMagazine, controllerStorageBox, fontColor);
                         break;
 
                     case "4":
@@ -64,7 +60,7 @@ namespace ReadingClub.ConsoleApp.View
                 menu.ShowMenu();
             }
         }
-        
+
         protected override string SelectOption()
         {
             Console.WriteLine(" - Enter 1 to manage Friends.");

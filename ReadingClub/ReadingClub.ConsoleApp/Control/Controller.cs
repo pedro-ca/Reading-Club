@@ -1,11 +1,9 @@
 ﻿using ReadingClub.ConsoleApp.Domain;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ReadingClub.ConsoleApp.Control
 {
-    class Controller<T> where T:Entity
+    class Controller<T> where T : Entity
     {
         const int REGISTER_LIMIT = 100;
         protected T[] registeredEntities = new T[REGISTER_LIMIT];
@@ -40,9 +38,10 @@ namespace ReadingClub.ConsoleApp.Control
             return operationMessage;
         }
 
-        public bool DeleteEntity(int index) 
+        public bool DeleteEntity(int index)
         {
-            if (index > 0 && index <= GetNumberOfEntities()) {
+            if (index > 0 && index <= GetNumberOfEntities())
+            {
                 for (int i = 0; i < registeredEntities.Length; i++)
                 {
                     if (registeredEntities[i].Id == index)
@@ -74,9 +73,9 @@ namespace ReadingClub.ConsoleApp.Control
             return entityAux;
         }
 
-        public object[] SelectAllEntities()
+        public T[] SelectAllEntities()
         {
-            object[] entityAux = new T[GetNumberOfEntities()];
+            T[] entityAux = new T[GetNumberOfEntities()];
 
             int i = 0;
 
@@ -120,7 +119,7 @@ namespace ReadingClub.ConsoleApp.Control
             }
             return -1;
         }
-        
+
         protected int SelectVacantPosition()
         {
             for (int i = 0; i < registeredEntities.Length; i++)
